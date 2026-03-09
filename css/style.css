@@ -26,6 +26,13 @@ header {
     padding: 20px 0;
 }
 
+.topo{
+    display: flex; /*  Ativa o Flexbox */
+    justify-content:space-between; /* Espaço entre eles*/
+    align-content: center; /* Todos ocupam o mesmo espaço */
+    padding: 10px;  /* Espaço interno */
+}
+
 .logo a{
     text-decoration: none; /*Tira o sublinhado do link*/
     color: white; /*Cor do texto branca*/
@@ -105,4 +112,22 @@ footer {
 footer a{
     color: #ff6a00;
     text-decoration: none;
+}
+
+article.curso{
+    text-align: center;
+}
+
+/* PÁGINA CURSOS */ 
+.cursos {
+    display: flex; /* Ativa o flexbox */
+    gap: 20px; /* Espaço entre os cards */
+}
+
+.curso{
+    flex: 1; /* Todos ocupam o mesmo espaço */
+    padding: 20px; /* Espaçamento interno */
+    background: white;
+    border-radius: 8px;
+    
 }
