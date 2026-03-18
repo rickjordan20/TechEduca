@@ -1,133 +1,305 @@
-/* ===== CONFIGURAÇÕES GERAIS ===== */
+/* ======= CONFIGURAÇÕES GERAIS ======= */
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #222;
-    background-color: #ffff;
+/* Estilo global do corpo da página */
+body {
+  font-family: Arial, Helvetica, sans-serif; /* Fonte padrão do site */
+  margin: 0;                                /* Remove margem padrão */
+  padding: 0;                               /* Remove preenchimento interno */
+  color: #222;                              /* Define cor do texto */
+  background-color: #ffffff;                /* Fundo branco */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+html, body { height: 100%; }
+
+/* Estilo aplicado aos títulos (h1, h2, h3) */
 h1, h2, h3 {
-    color: #1a4db3;
-    text-align: center;
+  color: #1a4db3;       /* Azul da identidade TechEduca */
+  text-align: center;   /* Centraliza os títulos */
 }
 
+/* Estilo dos parágrafos */
 p {
-    line-height: 1.5;  /* Altura de linha paragrafo  */
-    margin:10px 0; /* Margin em cima e embaixo*/
-    text-align: center;
+  line-height: 1.6;     /* Altura das linhas */
+  margin: 10px 0;       /* Espaçamento entre parágrafos */
 }
 
-/* ===== CABEÇALHO E MENU ===== */
+
+/* ======= CABEÇALHO E MENU ======= */
+
+/* Estilização da área superior do site */
 header {
-    background-color: #1a4db3;
-    color: white;
-    padding: 20px 0;
+  background-color: #1a4db3; /* Fundo azul */
+  color: white;              /* Texto branco */
+  padding: 20px 0;           /* Espaçamento vertical */
 }
 
-.topo{
-    display: flex; /*  Ativa o Flexbox */
-    justify-content:space-between; /* Espaço entre eles*/
-    align-content: center; /* Todos ocupam o mesmo espaço */
-    padding: 10px;  /* Espaço interno */
+/* Logo principal do site */
+.logo a {
+  text-decoration: none;     /* Remove sublinhado */
+  color: white;              /* Texto branco */
+  font-size: 24px;           /* Tamanho da fonte */
+  font-weight: bold;         /* Negrito */
 }
 
-.logo a{
-    text-decoration: none; /*Tira o sublinhado do link*/
-    color: white; /*Cor do texto branca*/
-    font-size: 24px; /*Tamanho da fonte*/
-    font-weight: bold;/*Espessura da fonte*/
+/* Destaque da palavra "Educa" */
+.logo span {
+  color: #ff6a00;            /* Cor laranja */
 }
 
-.logo span{
-    color: #ff6a00;
-}
-
-/* Acessando TAG.CLASS*/
+/* Container do menu */
 nav.menu {
-    text-align: center; 
-    margin-top: 10px; /* Margin no topo */
+  text-align: center;        /* Centraliza links */
+  margin-top: 10px;          /* Espaçamento superior */
 }
 
-nav.menu a{
-    color: white;
-    text-decoration: none;
-    margin:0 15px;
-    font-weight: bold;
+/* Estilos dos links do menu */
+nav.menu a {
+  color: white;              /* Texto branco */
+  text-decoration: none;     /* Remove sublinhado */
+  margin: 0 15px;            /* Espaço lateral */
+  font-weight: bold;         /* Negrito */
 }
 
-nav.menu a:hover { /* Efeito de passar o mouse em cima */
-    color:#ff6a00 
+/* Efeito ao passar o mouse */
+nav.menu a:hover {
+  color: #ff6a00;            /* Laranja no hover */
 }
 
-/* ==== SEÇÃO PRINCIPAL (index.html) ==== */
+
+/* ======= SEÇÃO PRINCIPAL ======= */
+
+/* Área de destaque superior */
 .hero {
-    background-color: #f5f5f5;
-    text-align: center;
-    padding: 60px 20px;
+  background-color: #f5f5f5; /* Fundo cinza claro */
+  text-align: center;        /* Centraliza todo o conteúdo */
+  padding: 60px 20px;        /* Espaçamento interno */
 }
 
-.hero h1{
-    font-size: 36px;
-    color: #1a4db3;
+/* Título principal da hero */
+.hero h1 {
+  font-size: 36px;           /* Tamanho grande */
+  color: #1a4db3;            /* Azul TechEduca */
 }
 
-.hero p{
-    font-size: 18px;
-    margin-bottom: 20px;
+/* Parágrafo da hero */
+.hero p {
+  font-size: 18px;           /* Aumenta a fonte */
+  margin-bottom: 20px;       /* Espaço abaixo */
 }
 
-/* Criando botões com hiperlinks */
-.btn-primario{
-    background-color: #ff6a00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
+/* ======= BOTÕES ======= */
+
+/* Botão de ação principal */
+.btn-primario {
+  background-color: #ff6a00; /* Fundo laranja */
+  color: white;              /* Texto branco */
+  padding: 10px 20px;        /* Espaçamento interno */
+  border-radius: 8px;        /* Cantos arredondados */
+  text-decoration: none;     /* Sem sublinhado */
 }
 
-.btn-secundario{
-    background-color: white;
-    color: #1a4db3;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: #1a4db3 2px solid;
+/* Botão secundário */
+.btn-secundario {
+  background-color: white;       /* Fundo branco */
+  color: #1a4db3;                /* Texto azul */
+  padding: 10px 20px;            /* Espaçamento interno */
+  border-radius: 8px;            /* Cantos arredondados */
+  text-decoration: none;         /* Remove sublinhado */
+  border: 2px solid #1a4db3;     /* Borda azul */
 }
 
-.btn-primario:hover , .btn-secundario:hover {
-    opacity: 0.8;
+/* Efeito ao passar o mouse nos botões */
+.btn-primario:hover, .btn-secundario:hover {
+  opacity: 0.8;                  /* Diminui opacidade (efeito suave) */
 }
 
-/* ==== RODAPÉ ==== */
+/* ======= RODAPÉ ======= */
+
+/* Área inferior fixa da página */
 footer {
-    background-color: #1a4db3;
-    color:white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
+  background-color: #1a4db3; /* Fundo azul */
+  color: white;              /* Texto branco */
+  text-align: center;        /* Centraliza conteúdo */
+  padding: 20px;             /* Espaçamento interno */
+  font-size: 14px;           /* Fonte menor */
+  margin-top: auto;
 }
 
-footer a{
-    color: #ff6a00;
-    text-decoration: none;
+/* Links dentro do rodapé */
+footer a {
+  color: #ff6a00;            /* Cor laranja */
+  text-decoration: none;     /* Sem sublinhado */
 }
 
-article.curso{
-    text-align: center;
+/* ======= CONTAINER GLOBAL ======= */
+
+/* Centraliza e limita a largura das áreas principais */
+.container {
+  max-width: 1200px; /* largura máxima do conteúdo */
+  margin: 0 auto;    /* centraliza o container */
+  padding: 0 20px;   /* espaço interno nas laterais */
 }
 
-/* PÁGINA CURSOS */ 
+
+/* ======= LAYOUT DO CABEÇALHO COM FLEXBOX ======= */
+
+.topo {
+  display: flex;              /* ativa o Flexbox */
+  justify-content: space-between; /* separa logo e menu */
+  align-items: center;        /* centraliza verticalmente */
+  padding: 10px 20px;         /* espaçamento interno */
+}
+
+/* Garante que o menu ocupe só o espaço necessário */
+.menu {
+  display: flex;              /* links em linha */
+  gap: 15px;                  /* espaço entre os links */
+}
+
+/* ======= AJUSTES PARA TELAS MENORES ======= */
+@media (max-width: 768px) {
+
+  .topo {
+    flex-direction: column; /* coloca logo e menu em coluna */
+    align-items: center;    /* centraliza tudo */
+  }
+
+  .menu {
+    flex-direction: column; /* links um embaixo do outro */
+    gap: 10px;              /* espaço entre os links */
+    margin-top: 10px;
+  }
+
+  .menu a {
+    display: block;         /* cada link vira um bloco clicável */
+  }
+}
+
+/* ======= CARDS DE DESTAQUE ======= */
+
+.cards {
+  display: flex;          /* coloca os cards lado a lado */
+  gap: 20px;              /* espaço entre os cards */
+  flex-wrap: wrap;        /* permite quebrar linha se faltar espaço */
+  justify-content: center;/* centraliza os cards no container */
+}
+
+.card {
+  background-color: #ffffff;      /* fundo branco */
+  padding: 20px;                  /* espaço interno */
+  border-radius: 8px;             /* cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* sombra suave */
+  flex: 1 1 250px;                /* largura flexível, mínimo 250px */
+}
+
+/* ======= SEÇÃO DE CURSOS ======= */
+
+/* ======= SEÇÃO DE CURSOS (SIMPLIFICADO) ======= */
+
+/* ======= SEÇÃO DE CURSOS ======= */
+
 .cursos {
-    display: flex; /* Ativa o flexbox */
-    gap: 20px; /* Espaço entre os cards */
+  padding: 30px 20px;
+  text-align: center;
 }
 
-.curso{
-    flex: 1; /* Todos ocupam o mesmo espaço */
-    padding: 20px; /* Espaçamento interno */
-    background: white;
-    border-radius: 8px;
-    
+/* Grid dos cards */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+
+  align-items: stretch;
+}
+
+/* Card */
+.curso {
+  display: flex;
+  flex-direction: column;
+
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+
+  text-decoration: none; /* remove sublinhado */
+  color: inherit;        /* mantém cor do texto */
+  transition: 0.2s;
+}
+
+.curso:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+
+/* Imagem inteira */
+.curso img {
+  width: 100%;
+  height: 140px;        /* altura padrão */
+  object-fit: contain;  /* mostra imagem inteira */
+  background-color: #f5f5f5; /* fundo neutro */
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+
+
+
+/* ======= FORMULÁRIO DE CONTATO ======= */
+
+.contato {
+  padding: 40px 20px;       /* espaço interno da seção */
+}
+
+.contato form {
+  max-width: 500px;         /* largura máxima do formulário */
+  margin: 0 auto;           /* centraliza na tela */
+  display: flex;
+  flex-direction: column;   /* campos um embaixo do outro */
+  gap: 10px;                /* espaço entre campos */
+}
+
+.contato label {
+  font-weight: bold;        /* destaca o texto do rótulo */
+}
+
+.contato input,
+.contato textarea {
+  padding: 8px;             /* deixa o campo confortável */
+  font-size: 16px;          /* texto legível */
+  width: 100%;              /* ocupa toda a largura do form */
+  box-sizing: border-box;   /* inclui padding na largura total */
+}
+
+.contato button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;          /* cursor de mãozinha ao passar sobre o botão */
+}
+
+.sobre {
+  text-align: center;
+}
+
+/* ======= BOTÃO DOS CARDS DE CURSO ======= */
+
+.btn-curso{
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #1a4db3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-curso:hover{
+  background-color: #ff6a00;
 }
