@@ -22,7 +22,7 @@ async function carregarCursos(){
     console.log(resposta);
 
     //transforma o JSON em dados que o js entende
-    const cursos = await resposta.json();
+    cursos = await resposta.json();
 
     //depois de caregar, já renderiza na tela
     renderizarCursos(cursos);
@@ -61,6 +61,26 @@ function renderizarCursos(lista){
     5) FUNÇÃO PARA BUSCA DE CURSO
   ============================================================
 */
+// Chamar uma função que captura a ação do usuário e dispara um evento
+buscaCursos.addEventListener("input", function(){
+  // Pega o valor digitado
+  const texto = buscaCursos.value.toLowerCase(); // pega o valor digitado no input e deixa tudo minúsculo
+
+  const filtrados = cursos.filter((curso) => 
+    // Para cada CURSO:
+  // curso.titulo -> acesso título (chave JSON)
+  // toLowerCase() -> padroniza comparação
+  // includes(texto) -> verifica se o texto digitado está dentro do título
+  // retorna true (entra no filtro) ou false (e ignorado)
+    curso.titulo.toLowerCase().includes(texto)
+  
+  )
+
+// Reenderizar a tla com novalista filtrada
+renderizarCursos(filtrados);
+});
+
+
 
 
 /*============================================================
