@@ -177,6 +177,29 @@ footer a {
   .menu a {
     display: block;         /* cada link vira um bloco clicável */
   }
+
+  .curso{
+    max-width: 600px; /* limite da largura */
+    margin: 0 auto; /* centraliza horizontalmente */
+    padding: 20px; /* espaço interno */
+    background: #fff; /* cor de fundo */
+    border-radius: 8px; /* borda com cantos arrendondados */
+  }
+}
+
+@media (max-width: 480px){
+  h1 {
+    font-size: 28px;
+  }
+
+  p{
+    font-size: 16px;
+  }
+
+  form{
+    padding: 0 10px;
+  }
+
 }
 
 /* ======= CARDS DE DESTAQUE ======= */
