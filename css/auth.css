@@ -1,0 +1,83 @@
+.pagina-auth {
+  padding: 40px 20px;
+}
+
+.bloco-auth {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.bloco-auth h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.texto-auth {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.form-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-auth label {
+  font-weight: bold;
+}
+
+.form-auth input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.form-auth input:focus {
+  outline: none;
+  border-color: #1a4db3;
+}
+
+.mensagem-auth {
+  min-height: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.link-auth {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-auth a {
+  color: #1a4db3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-auth a:hover {
+  color: #ff6a00;
+}
+
+.aviso-login {
+  max-width: 700px;
+  margin: 15px auto 25px;
+  padding: 12px 16px;
+  background-color: #fff3e8;
+  border-left: 4px solid #ff6a00;
+  border-radius: 6px;
+}
+
+.btn-login-menu {
+  background-color: #ff6a00;
+  color: white !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
