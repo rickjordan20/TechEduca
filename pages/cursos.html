@@ -11,27 +11,27 @@
     <body>
 
         <script>
-  const API_URL = "http://localhost:3000";
+            const API_URL = "https://techeduca.onrender.com";
 
-  async function verificarLogin() {
-    try {
-      const resposta = await fetch(`${API_URL}/me`, {
-        method: "GET",
-        credentials: "include"
-      });
+            async function verificarLogin() {
+              try {
+                const resposta = await fetch(`${API_URL}/me`, {
+                  method: "GET",
+                  credentials: "include"
+                });
 
-      if (!resposta.ok) {
-        alert("Você precisa fazer login para acessar os cursos.");
-        window.location.href = "./login.html";
-      }
-    } catch (erro) {
-      alert("Erro ao verificar login.");
-      window.location.href = "./login.html";
-    }
-  }
+                if (!resposta.ok) {
+                  alert("Você precisa fazer login para acessar os cursos.");
+                  window.location.href = "./login.html";
+                }
+              } catch (erro) {
+                alert("Erro ao verificar login.");
+                window.location.href = "./login.html";
+              }
+            }
 
-  verificarLogin();
-</script>
+            verificarLogin();
+        </script>
         <!-- Cabeçalho reutilizado -->
         <header class="topo"> <!-- Cabeçalho do Site -->
             <div class="logo">
