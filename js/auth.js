@@ -2,10 +2,10 @@ const formCadastro = document.getElementById("formCadastro");
 const formLogin = document.getElementById("formLogin");
 
 // local
-//const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3000";
 
 // produção: troque por algo como:
-const API_URL = "https://techeduca.onrender.com";
+//const API_URL = "https://techeduca.onrender.com";
 
 if (formCadastro) {
   formCadastro.addEventListener("submit", async function (event) {
@@ -33,6 +33,7 @@ if (formCadastro) {
       const resposta = await fetch(`${API_URL}/cadastro`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ nome, email, senha })
       });
 
