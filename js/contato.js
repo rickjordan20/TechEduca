@@ -28,7 +28,7 @@ form.addEventListener("submit", async function(event){
     */
     try{
         // 6. Envia os dados para o servidor usando fetch()
-        const resposta = await fetch("http://localhost:3000/mensagem",{
+        const resposta = await fetch("https://techeduca.onrender.com/mensagem",{
             method:"POST", // POST = estamos enviando dados
             headers: {
                 "Content-Type":"application/json" // avisa que formato é JSON

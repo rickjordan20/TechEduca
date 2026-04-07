@@ -85,7 +85,9 @@ app.post("/cadastro", async (req, res) => {
 // login
 app.post("/login", async (req, res) => {
   try {
-    const { email, senha } = req.body;
+    //const { email, senha } = req.body;
+    const email = req.body.email;
+    const senha = req.body.senha;
 
     if (!email || !senha) {
       return res.status(400).json({ erro: "Preencha e-mail e senha." });
