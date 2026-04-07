@@ -14,7 +14,7 @@ if(formCadastro){
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value;
-        const confirmaSenha = document.getElementById("confirmaSenha").value;
+        const confirmaSenha = document.getElementById("confirmasenha").value;
         
         const mensagem = document.getElementById("mensagemCadastro");
         mensagem.textContent=""; // Limpa mensagem anterior
@@ -45,7 +45,7 @@ if(formCadastro){
             );
 
             // Lê a reposta como objeto JS
-            const dados = await resposta.JSON();
+            const dados = await resposta.json();
 
             // Exibe a mensagem de acesso ou erro
             mensagem.textContent = dados.mensagem || dados.error;
@@ -53,9 +53,9 @@ if(formCadastro){
             // sucesso -> limpa o formulário
             formCadastro.reset();
 
-        }catch{
+        }catch(error){
             // Servidor offline ou inacessível
-            mensagem.textContent = "Erro ao conectar com o servidor"
+            mensagem.textContent = "Erro ao conectar com o servidor";
         }
         
     })
@@ -96,7 +96,7 @@ if(formLogin){
             );
 
             // Lê a reposta como objeto JS
-            const dados = await resposta.JSON();
+            const dados = await resposta.json();
 
             // Exibe a mensagem de acesso ou erro
             mensagem.textContent = dados.mensagem || dados.error;

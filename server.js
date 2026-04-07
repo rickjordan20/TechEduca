@@ -23,8 +23,8 @@ const app = express();
 
 // 7. Cria uma lista de instância de conexões
 const listOrigins = [
-    "http://localhost:5500", // ambiente local (live server)
-    "http://127.0.0.1:5500", // variação de localhost
+    "http://localhost:5501", // ambiente local (live server)
+    "http://127.0.0.1:5501", // variação de localhost
     "https://user.github.io" // dominio do frontend em produção
 ]
 
@@ -74,7 +74,7 @@ app.use(session(sessionConfig)) // configura a sessão no servidor
 2 PARTE - CRIAR ROTA E INICIAR
 ===============================================
 */
-// 6. Define a rota POST "/mensagem"
+// 1. Define a rota POST "/mensagem"
 // Quando o formulário enviar os dados para /mensagem, essa função roda
 app.post("/mensagem", (req,res) => {
      //7. req.body contém os dados enviados pelo formulário
@@ -84,6 +84,122 @@ app.post("/mensagem", (req,res) => {
     //8. Envia uma mensagem de volta para o navegador
     res.send("Mensagem recebida com sucesso!");
 });
+
+// 2. Define a rota POST "/cadastro"
+// aponta para cadastro.html
+app.post("/cadastro", async (req,res) => {
+    try{
+        //const nome = req.body.nome
+        //const email = req.body.email
+        //const senha = req.body.senha
+
+        const {nome,email,senha} = req.body // forma desestruturada
+
+        if(!nome || !email || !senha ){
+            return res.status(400).json({erro:"Preencha todos os campos"});
+        }
+
+        // Crio um array[rows] e guardo dentro o resultado do select
+        const [rows] = await pool.execute(  //consulta no banco
+            "SELECT id FROM tb_usuarios WHERE email=?",[email] 
+                //busca se o e-mail existe no banco e retorna o id
+        );
+
+        if(rows.lenght > 0){
+            return res.status(409).json({erro: "E-mail já cadastrado"});
+        };
+        
+        // criptografa a senha e guarda dentro da variável
+        const senhaHash = await bcrypt.hash(senha,10);   
+            //gera o hash da senha com custo 10(mais seguro)
+
+        // Inserir os dados no banco de dados
+        pool.execute( // executa o INSERT no banco
+            ```INSERT INTO tb_usuarios(nome,email,senha) 
+                        VALUES(?,?,?)```,
+                        [nome,email,senhaHash] // substitui os ? pelos valores reais
+        );
+        // retorna 201 (criado com sucesso)
+        res.status(201).json({mensagem:" Cadastro realizado com sucesso!"});
+    } catch{
+        // retorna 500 se o servidor não conseguir cadastrar
+        res.status(500).json({erro: "Erro ao cadastrar usuário"})
+    }
+});
+
+// 3. Define a rota POST "/login"
+// aponta para login.html
+app.post("/login", async (req,res) => {
+    try{
+        //const email = req.body.email
+        //const senha = req.body.senha
+
+        const {email,senha} = req.body // forma desestruturada
+
+        if(!email || !senha ){
+            return res.status(400).json({erro:"Preencha todos os campos"});
+        }
+
+        // Crio um array[rows] e guardo dentro o resultado do select
+        const [rows] = await pool.execute(  //consulta no banco
+            "SELECT id FROM tb_usuarios WHERE email=?",[email] 
+                //busca se o e-mail existe no banco e retorna o id
+        );
+
+        if(rows.lengh == 0){
+            // retorna 401 se não achar usuário com esse e-mail
+            return res.status(401).json({erro: "Usuário não encontrado"});
+        };
+
+        const usuario = rows[0] // pega o primeiro (e único) resultado de consulta
+
+        // descriptografa a senha e guarda dentro da variável
+        const senhaCorreta = await bcrypt.compare(senha,usuario.senha)
+            // compara a senha digitada com a senha hash salvo no banco (true/false)
+
+        if(!senhaCorreta){
+            // senha hash for diferente da senha digitada
+            return res.status(401).json({erro: "Senha inválida"});
+            // 401 - acesso não autorizado
+        };
+
+        req.session.usuario = {
+            // cria a sessão no servidor com os dados do usuário
+            id: usuario.id, // ID interno do usuário
+            nome: usuario.nome, // nome para exibir na interface
+            email: usuario.email // email para referência futura
+        }
+
+        res.json({mensagem:"Login realizado com sucesso!"});
+        // status=200
+    } catch{
+        // retorna 500 se o servidor não conseguir cadastrar
+        res.status(500).json({erro: "Erro ao fazer login"})
+    }
+})
+
+// 4. Define a rota get "/me" - verificar sessão
+app.get("/me", (req, res) => {
+    if(!req.session.usuario){ // se não há sessão salva
+        return res.status(401).json({logado:false});
+        // avisa que não está logado
+    }
+
+    res.json({
+        logado:true, // confirma que está logado
+        usuario: req.session.usuario 
+            // devolve os dados do usuário (nome,email,id)
+    })
+});
+
+// 5. Define a rota post "/logout" - encerrar sessão
+app.post("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.json({mensagem: "Logout realizado"});
+    });
+});
+
+
 
 // 9. Inicia o Servidor na PORTA 3000
 // Depois, o servidor fica "ouvindo" por novas mensagens
