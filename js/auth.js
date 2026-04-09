@@ -47,13 +47,20 @@ if(formCadastro){
             // Lê a reposta como objeto JS
             const dados = await resposta.json();
 
-            // Exibe a mensagem de acesso ou erro
-            mensagem.textContent = dados.mensagem || dados.error;
+            if(!resposta.ok){
+                // mensagem (paragrafo do html embaixo do form) = mensagem sucesso ou de erro    
+                mensagem.textContent = dados.mensagem || dados.erro;
+                return
+            }
+
+            // Exibe a mensagem de acesso
+            mensagem.textContent = dados.mensagem
 
             // sucesso -> limpa o formulário
             formCadastro.reset();
 
         }catch(error){
+            console.error(error); // aparece no terminal pro dev
             // Servidor offline ou inacessível
             mensagem.textContent = "Erro ao conectar com o servidor";
         }
@@ -99,14 +106,15 @@ if(formLogin){
             const dados = await resposta.json();
 
             // Exibe a mensagem de acesso ou erro
-            mensagem.textContent = dados.mensagem || dados.error;
+            mensagem.textContent = dados.mensagem || dados.erro;
 
             // sucesso -> redirecionar para página cursos.html
             if(resposta.ok){
                 window.location.href = "../pages/cursos.html";
             }
 
-        }catch{
+        }catch(error){
+            console.error(error); // aparece no terminal
             // Servidor offline ou inacessível
             mensagem.textContent = "Erro ao conectar com o servidor"
         }
