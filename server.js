@@ -3,6 +3,9 @@
 1 PARTE - CONFIGURAR O SERVIDOR
 ===============================================
 */
+// Importar as credenciais do banco
+require("dotenv").config();
+
 // 1. Importar o Express - ele cria e gerencia o servidor
 const express = require("express");
 
@@ -50,7 +53,7 @@ const sessionConfig = {
     saveUninitialized: false, 
         // não cria sessão para usuários não logados
     name: "techeduca.sid", 
-        // nome personalizado do cookir da sessão
+        // nome personalizado do cookie da sessão
     cookie: {
         httpOnly : true, // bloqueia o acesso via JavaScript
         maxAge: 1000 * 60 * 60 // sessão expira em 1 hora (em mil)
@@ -105,7 +108,7 @@ app.post("/cadastro", async (req,res) => {
                 //busca se o e-mail existe no banco e retorna o id
         );
 
-        if(rows.lenght > 0){
+        if(rows.length > 0){
             return res.status(409).json({erro: "E-mail já cadastrado"});
         };
         
@@ -114,15 +117,15 @@ app.post("/cadastro", async (req,res) => {
             //gera o hash da senha com custo 10(mais seguro)
 
         // Inserir os dados no banco de dados
-        pool.execute( // executa o INSERT no banco
-            ```INSERT INTO tb_usuarios(nome,email,senha) 
-                        VALUES(?,?,?)```,
+        await pool.execute( // executa o INSERT no banco
+            "INSERT INTO tb_usuarios(nome,email,senha) VALUES(?,?,?)",
                         [nome,email,senhaHash] // substitui os ? pelos valores reais
         );
         // retorna 201 (criado com sucesso)
         res.status(201).json({mensagem:" Cadastro realizado com sucesso!"});
-    } catch{
+    } catch(error){
         // retorna 500 se o servidor não conseguir cadastrar
+        console.error(error); // aparece no terminal pro dev
         res.status(500).json({erro: "Erro ao cadastrar usuário"})
     }
 });
@@ -142,11 +145,11 @@ app.post("/login", async (req,res) => {
 
         // Crio um array[rows] e guardo dentro o resultado do select
         const [rows] = await pool.execute(  //consulta no banco
-            "SELECT id FROM tb_usuarios WHERE email=?",[email] 
+            "SELECT id, nome, email, senha FROM tb_usuarios WHERE email=?",[email] 
                 //busca se o e-mail existe no banco e retorna o id
         );
 
-        if(rows.lengh == 0){
+        if(rows.length == 0){
             // retorna 401 se não achar usuário com esse e-mail
             return res.status(401).json({erro: "Usuário não encontrado"});
         };
@@ -172,8 +175,9 @@ app.post("/login", async (req,res) => {
 
         res.json({mensagem:"Login realizado com sucesso!"});
         // status=200
-    } catch{
+    } catch(error){
         // retorna 500 se o servidor não conseguir cadastrar
+        console.error(error); // aparece no terminal pro dev
         res.status(500).json({erro: "Erro ao fazer login"})
     }
 })
@@ -195,6 +199,7 @@ app.get("/me", (req, res) => {
 // 5. Define a rota post "/logout" - encerrar sessão
 app.post("/logout", (req, res) => {
     req.session.destroy(() => {
+        res.clearCookie("techeduca.sid")
         res.json({mensagem: "Logout realizado"});
     });
 });
