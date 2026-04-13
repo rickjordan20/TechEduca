@@ -2,9 +2,9 @@ const formCadastro = document.getElementById("formCadastro");
 const formLogin = document.getElementById("formLogin");
 
 //URL da API LOCAL
-const API_URL = "http://localhost:3000"
+//const API_URL = "http://localhost:3000"
 // Troque pelo URL do Render antes de publicar
-// const API_URL = "url_render"
+const API_URL = "https://techeduca.onrender.com"
 
 if(formCadastro){
     formCadastro.addEventListener("submit", async function(event){
