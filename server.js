@@ -26,6 +26,8 @@ const app = express();
 
 // 7. Cria uma lista de instância de conexões
 const listOrigins = [
+     "http://localhost:5500",
+    "http://127.0.0.1:5500",
     "http://localhost:5501", // ambiente local (live server)
     "http://127.0.0.1:5501", // variação de localhost
     "https://rickjordan20.github.io", // dominio do frontend em produção,
@@ -209,10 +211,15 @@ app.post("/logout", (req, res) => {
 
 // 9. Inicia o Servidor na PORTA 3000
 // Depois, o servidor fica "ouvindo" por novas mensagens
-app.listen(3000, () => {
-    console.log("Servidor rodando em http://localhost:3000");
+const PORT = 3000;
+
+const servidor = app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
 
+servidor.on("error", (erro) => {
+    console.error("Erro ao iniciar servidor:", erro);
+});
 
 
 

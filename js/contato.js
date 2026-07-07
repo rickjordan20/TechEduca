@@ -6,6 +6,11 @@
 // 1. Pega o formulário pelo ID que colocamos no HTML
 const form = document.getElementById("formContato");
 
+//URL da API LOCAL
+//const API_URL = "http://localhost:3000"
+// Troque pelo URL do Render antes de publicar
+const API_URL = "https://techeduca.onrender.com"
+
 // 2. Chama função para ficar "ouvindo" o momento que o 
 //usuário clicar no botão Enviar
 form.addEventListener("submit", async function(event){
@@ -28,7 +33,7 @@ form.addEventListener("submit", async function(event){
     */
     try{
         // 6. Envia os dados para o servidor usando fetch()
-        const resposta = await fetch("https://techeduca.onrender.com/mensagem",{
+        const resposta = await fetch(`${API_URL}/mensagem`,{
             method:"POST", // POST = estamos enviando dados
             headers: {
                 "Content-Type":"application/json" // avisa que formato é JSON
