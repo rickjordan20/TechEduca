@@ -42,7 +42,7 @@ function renderizarCursos(lista){
         const card = document.createElement("div");
 
         // coloca uma class dentro da tag criada
-        card.classList.add("card");
+        card.classList.add("card","curso");
 
         //coloca o conteúdo dentro do card
         card.innerHTML = `
@@ -50,7 +50,7 @@ function renderizarCursos(lista){
             <img src="${curso.img}" width="150" height="150">
             <p> ${curso.descricao} </p>
             <p> <strong>CH: </strong> ${curso.ch}</p>
-            <a href="${curso.url}"><button>Ver detalhes</button></a>
+            <a href="detalhes-curso.html?id=${curso.id}"><button class="btn_curso">Ver detalhes</button></a>
         `;
         ListaCursos.appendChild(card);
     });
