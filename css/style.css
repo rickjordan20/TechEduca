@@ -5,8 +5,8 @@ body {
   font-family: Arial, Helvetica, sans-serif; /* Fonte padrão do site */
   margin: 0;                                /* Remove margem padrão */
   padding: 0;                               /* Remove preenchimento interno */
-  color: #222;                              /* Define cor do texto */
-  background-color: #ffffff;                /* Fundo branco */
+  color: #111827;                           /* Define cor do texto */
+  background-color: #f4f7fc;                /* Fundo suave */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ html, body { height: 100%; }
 
 /* Estilo aplicado aos títulos (h1, h2, h3) */
 h1, h2, h3 {
-  color: #1a4db3;       /* Azul da identidade TechEduca */
+  color: #0f3d82;       /* Azul escuro moderno */
   text-align: center;   /* Centraliza os títulos */
 }
 
@@ -31,7 +31,7 @@ p {
 
 /* Estilização da área superior do site */
 header {
-  background-color: #1a4db3; /* Fundo azul */
+  background-color: #0f3d82; /* Fundo azul escuro */
   color: white;              /* Texto branco */
   padding: 20px 0;           /* Espaçamento vertical */
 }
@@ -46,7 +46,7 @@ header {
 
 /* Destaque da palavra "Educa" */
 .logo span {
-  color: #ff6a00;            /* Cor laranja */
+  color: #ff7a18;            /* Cor laranja vibrante */
 }
 
 /* Container do menu */
@@ -65,7 +65,7 @@ nav.menu a {
 
 /* Efeito ao passar o mouse */
 nav.menu a:hover {
-  color: #ff6a00;            /* Laranja no hover */
+  color: #ff7a18;            /* Laranja vibrante no hover */
 }
 
 
@@ -73,7 +73,7 @@ nav.menu a:hover {
 
 /* Área de destaque superior */
 .hero {
-  background-color: #f5f5f5; /* Fundo cinza claro */
+  background-color: #e9eff7; /* Fundo suave azul claro */
   text-align: center;        /* Centraliza todo o conteúdo */
   padding: 60px 20px;        /* Espaçamento interno */
   text-align: center;
@@ -82,7 +82,7 @@ nav.menu a:hover {
 /* Título principal da hero */
 .hero h1 {
   font-size: 36px;           /* Tamanho grande */
-  color: #1a4db3;            /* Azul TechEduca */
+  color: #0f3d82;            /* Azul escuro moderno */
 }
 
 /* Parágrafo da hero */
@@ -95,7 +95,7 @@ nav.menu a:hover {
 
 /* Botão de ação principal */
 .btn-primario {
-  background-color: #ff6a00; /* Fundo laranja */
+  background-color: #ff7a18; /* Fundo laranja vibrante */
   color: white;              /* Texto branco */
   padding: 10px 20px;        /* Espaçamento interno */
   border-radius: 8px;        /* Cantos arredondados */
@@ -105,11 +105,11 @@ nav.menu a:hover {
 /* Botão secundário */
 .btn-secundario {
   background-color: white;       /* Fundo branco */
-  color: #1a4db3;                /* Texto azul */
+  color: #0f3d82;                /* Texto azul escuro */
   padding: 10px 20px;            /* Espaçamento interno */
   border-radius: 8px;            /* Cantos arredondados */
   text-decoration: none;         /* Remove sublinhado */
-  border: 2px solid #1a4db3;     /* Borda azul */
+  border: 2px solid #0f3d82;     /* Borda azul escuro */
 }
 
 /* Efeito ao passar o mouse nos botões */
@@ -121,7 +121,7 @@ nav.menu a:hover {
 
 /* Área inferior fixa da página */
 footer {
-  background-color: #1a4db3; /* Fundo azul */
+  background-color: #0f3d82; /* Fundo azul escuro */
   color: white;              /* Texto branco */
   text-align: center;        /* Centraliza conteúdo */
   padding: 20px;             /* Espaçamento interno */
@@ -131,7 +131,7 @@ footer {
 
 /* Links dentro do rodapé */
 footer a {
-  color: #ff6a00;            /* Cor laranja */
+  color: #ff7a18;            /* Cor laranja vibrante */
   text-decoration: none;     /* Sem sublinhado */
 }
 
@@ -185,6 +185,86 @@ footer a {
     background: #fff; /* cor de fundo */
     border-radius: 8px; /* borda com cantos arrendondados */
   }
+}
+
+/* ======= SOBRE  ======= */
+.sobre {
+  padding: 40px 20px;
+}
+
+.sobre h2 {
+  margin-top: 0;
+}
+
+.sobre-subtitulo {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 15px;
+}
+
+.secao {
+  background-color: #0f3d82;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 0 auto 16px;
+  max-width: 700px;
+  box-shadow: 0 3px 8px rgba(15,61,130,0.15);
+}
+
+.secao h3 {
+  margin: 0 0 10px;
+  color: #f8fafc;
+}
+
+.secao-texto {
+  margin: 0;
+  line-height: 1.6;
+  color: #e8eef8;
+}
+
+.valores-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 700px;
+}
+
+.valores-lista li {
+  padding: 6px 0;
+  line-height: 1.6;
+  text-align: left;
+  color: #e8eef8;
+}
+
+.valores-lista li::before {
+  content: "• ";
+  color: #ffb74d;
+  font-weight: bold;
+}
+
+.valores-lista strong {
+  color: #ffb74d;
+}
+
+.diferencial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.diferencial-item {
+  background-color: #172d52;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.diferencial-texto {
+  margin: 0;
+  font-size: 13px;
+  color: #e8eef8;
 }
 
 @media (max-width: 480px){
@@ -386,3 +466,4 @@ footer a {
       text-align: center;
       margin-bottom: 20;
 }
+
