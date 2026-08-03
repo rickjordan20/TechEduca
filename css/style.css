@@ -97,7 +97,7 @@ nav.menu a:hover {
 .btn-primario {
   background-color: #ff6a00; /* Fundo laranja */
   color: white;              /* Texto branco */
-  padding: 10px 20px;        /* Espaçamento interno */
+  padding: 12px 20px;        /* Espaçamento interno */
   border-radius: 8px;        /* Cantos arredondados */
   text-decoration: none;     /* Sem sublinhado */
 }
@@ -106,15 +106,15 @@ nav.menu a:hover {
 .btn-secundario {
   background-color: white;       /* Fundo branco */
   color: #1a4db3;                /* Texto azul */
-  padding: 10px 20px;            /* Espaçamento interno */
-  border-radius: 8px;            /* Cantos arredondados */
+  padding: 12px 20px;            /* Espaçamento interno */
+  border-radius: 13px;            /* Cantos arredondados */
   text-decoration: none;         /* Remove sublinhado */
   border: 2px solid #1a4db3;     /* Borda azul */
 }
 
 /* Efeito ao passar o mouse nos botões */
 .btn-primario:hover, .btn-secundario:hover {
-  opacity: 0.8;                  /* Diminui opacidade (efeito suave) */
+  opacity: 0.7;                  /* Diminui opacidade (efeito suave) */
 }
 
 /* ======= RODAPÉ ======= */
