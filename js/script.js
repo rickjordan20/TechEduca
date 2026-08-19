@@ -46,11 +46,11 @@ function renderizarCursos(lista){
 
         //coloca o conteúdo dentro do card
         card.innerHTML = `
-            <h3> ${curso.titulo} </h3>
-            <img src="${curso.img}" width="150" height="150">
+            <h2> ${curso.titulo} </h2>
+            <img src="${curso.img}" title="${curso.titulo}" alt="${curso.descricao}" width="150" height="150">
             <p> ${curso.descricao} </p>
             <p> <strong>CH: </strong> ${curso.ch}</p>
-            <a href="detalhes-curso.html?id=${curso.id}"><button class="btn_curso">Ver detalhes</button></a>
+            <a href="detalhes-curso.html?id=${curso.id}"><button class="btn-curso">Ver detalhes</button></a>
         `;
         ListaCursos.appendChild(card);
     });
